@@ -10,7 +10,7 @@ DMRI_DIR=$(realpath ../../input/dmri)
 FA_DIR=$(realpath ../../input/FA)
 TRK_DIR=$(realpath ../../derivatives/tractography_${TAG})
 
-echo "Processing subject ${subject}..."
+echo "Processing ${subject}..."
 
 # -----------------------------------------------------------------------#
 
@@ -19,7 +19,7 @@ if [ ! -d ${T1w_DIR} ]; then mkdir ${T1w_DIR}; fi
 if [ ! -d ${T1w_DIR}/sub-${sub} ]; then mkdir ${T1w_DIR}/sub-${sub}; fi
 t1_file=${SRC_DIR}/${subject}/Niftii/Structural/*.nii
 echo "renaming $t1_file"
-ln -s $t1_file ${T1w_DIR}/sub-${sub}/sub-${sub}_t1.nii
+ln -sf $t1_file ${T1w_DIR}/sub-${sub}/sub-${sub}_t1.nii
 
 # -----------------------------------------------------------------------#
 
@@ -31,10 +31,10 @@ bval=${SRC_DIR}/${subject}/Niftii/Diffusion/*bval
 bvec=${SRC_DIR}/${subject}/Niftii/Diffusion/*bvec
 iso_file=${SRC_DIR}/${subject}/Niftii/Diffusion/*_iso.nii.gz
 echo "renaming $dmri_file"
-ln -s $dmri_file ${DMRI_DIR}/sub-${sub}/sub-${sub}_dmri.nii.gz
-ln -s $bval ${DMRI_DIR}/sub-${sub}/sub-${sub}_bval
-ln -s $bvec ${DMRI_DIR}/sub-${sub}/sub-${sub}_bvec
-ln -s $iso_file ${DMRI_DIR}/sub-${sub}/sub-${sub}_iso.nii.gz
+ln -sf $dmri_file ${DMRI_DIR}/sub-${sub}/sub-${sub}_dmri.nii.gz
+ln -sf $bval ${DMRI_DIR}/sub-${sub}/sub-${sub}_bval
+ln -sf $bvec ${DMRI_DIR}/sub-${sub}/sub-${sub}_bvec
+ln -sf $iso_file ${DMRI_DIR}/sub-${sub}/sub-${sub}_iso.nii.gz
 
 # -----------------------------------------------------------------------#
 
@@ -43,7 +43,7 @@ if [ ! -d ${FA_DIR} ]; then mkdir ${FA_DIR}; fi
 if [ ! -d ${FA_DIR}/sub-${sub} ]; then mkdir ${FA_DIR}/sub-${sub}; fi
 fa_file=${SRC_DIR}/${subject}/Niftii/Diffusion/*_FA.nii.gz
 echo "renaming $fa_file"
-ln -s $fa_file ${FA_DIR}/sub-${sub}/sub-${sub}_FA.nii.gz
+ln -sf $fa_file ${FA_DIR}/sub-${sub}/sub-${sub}_FA.nii.gz
 
 # -----------------------------------------------------------------------#
 
@@ -52,7 +52,7 @@ if [ ! -d ${TRK_DIR} ]; then mkdir ${TRK_DIR}; fi
 if [ ! -d ${TRK_DIR}/sub-${sub} ]; then mkdir ${TRK_DIR}/sub-${sub}; fi
 trk_file=${SRC_DIR}/${subject}/TRK/Tractography/*1M_apss.trk
 echo "renaming $trk_file"
-ln -s $trk_file ${TRK_DIR}/sub-${sub}/sub-${sub}_var-${TAG}_tract.trk
+ln -sf $trk_file ${TRK_DIR}/sub-${sub}/sub-${sub}_var-${TAG}_tract.trk
 
 # -----------------------------------------------------------------------#
 
