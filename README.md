@@ -32,6 +32,7 @@ APSS-BIDS
     > derivatives 
         >> FA_APSS
         >> tractography_APSS
-        >> clinic_dissection_APSS
         >> trackvis_scenes_APSS
+        >> clinic_dissection_nifti_APSS
+        >> clinic_dissection_trk_APSS
 ```
