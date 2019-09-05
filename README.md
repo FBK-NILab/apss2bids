@@ -24,12 +24,14 @@ cd apss2bids
 
 ### Directory tree proposal
 ```
-APSS-BIDS \
-    code
-    input \
-        dwi
-        anat
-    derivatives \
-        tractography_APSS
-        clinical_dissection_APSS
+APSS-BIDS 
+    > code
+    > input 
+        >> dwi
+        >> anat
+    > derivatives 
+        >> FA_APSS
+        >> tractography_APSS
+        >> clinic_dissection_APSS
+        >> trackvis_scenes_APSS
 ```
