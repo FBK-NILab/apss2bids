@@ -21,3 +21,15 @@ on the subject Subject_20_FeMa and tag APSS, type:
 cd apss2bids
 ./apss2bids.sh Subject_20_FeMa APSS
 ```
+
+### Directory tree proposal
+```
+APSS-BIDS \
+    code
+    input \
+        dwi
+        anat
+    derivatives \
+        tractography_APSS
+        clinical_dissection_APSS
+```
