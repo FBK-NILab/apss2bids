@@ -5,9 +5,9 @@ TAG=$2
 sub=${subject:8:2} #if 10 < subject ID < 100
 
 SRC_DIR=$(realpath ../../../APSS_Sarubbo_all_patients/original/trk_nifti)
-T1w_DIR=$(realpath ../../input/T1w)
-DMRI_DIR=$(realpath ../../input/dmri)
-FA_DIR=$(realpath ../../input/FA)
+T1w_DIR=$(realpath ../../input/anat)
+DMRI_DIR=$(realpath ../../input/dwi)
+FA_DIR=$(realpath ../../derivatives/FA_${TAG})
 TRK_DIR=$(realpath ../../derivatives/tractography_${TAG})
 
 echo "Processing ${subject}..."
@@ -19,7 +19,7 @@ if [ ! -d ${T1w_DIR} ]; then mkdir ${T1w_DIR}; fi
 if [ ! -d ${T1w_DIR}/sub-${sub} ]; then mkdir ${T1w_DIR}/sub-${sub}; fi
 t1_file=${SRC_DIR}/${subject}/Niftii/Structural/*.nii
 echo "renaming $t1_file"
-ln -sf $t1_file ${T1w_DIR}/sub-${sub}/sub-${sub}_t1.nii
+ln -sf $t1_file ${T1w_DIR}/sub-${sub}/sub-${sub}_t1.nii.gz
 
 # -----------------------------------------------------------------------#
 
@@ -34,7 +34,7 @@ echo "renaming $dmri_file"
 ln -sf $dmri_file ${DMRI_DIR}/sub-${sub}/sub-${sub}_dmri.nii.gz
 ln -sf $bval ${DMRI_DIR}/sub-${sub}/sub-${sub}_bval
 ln -sf $bvec ${DMRI_DIR}/sub-${sub}/sub-${sub}_bvec
-ln -sf $iso_file ${DMRI_DIR}/sub-${sub}/sub-${sub}_iso.nii.gz
+#ln -sf $iso_file ${DMRI_DIR}/sub-${sub}/sub-${sub}_iso.nii.gz
 
 # -----------------------------------------------------------------------#
 
@@ -52,7 +52,7 @@ if [ ! -d ${TRK_DIR} ]; then mkdir ${TRK_DIR}; fi
 if [ ! -d ${TRK_DIR}/sub-${sub} ]; then mkdir ${TRK_DIR}/sub-${sub}; fi
 trk_file=${SRC_DIR}/${subject}/TRK/Tractography/*1M_apss.trk
 echo "renaming $trk_file"
-ln -sf $trk_file ${TRK_DIR}/sub-${sub}/sub-${sub}_var-${TAG}_tract.trk
+cp $trk_file ${TRK_DIR}/sub-${sub}/sub-${sub}_var-${TAG}_tract.trk
 
 # -----------------------------------------------------------------------#
 
