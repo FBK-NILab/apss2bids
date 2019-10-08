@@ -50,7 +50,7 @@ ln -sf $fa_file ${FA_DIR}/sub-${sub}/sub-${sub}_FA.nii.gz
 echo "Creating tractography directory..."
 if [ ! -d ${TRK_DIR} ]; then mkdir ${TRK_DIR}; fi
 if [ ! -d ${TRK_DIR}/sub-${sub} ]; then mkdir ${TRK_DIR}/sub-${sub}; fi
-trk_file=${SRC_DIR}/${subject}/TRK/Tractography/*1M_apss.trk
+trk_file=${SRC_DIR}/${subject}/TRK/Tractography/*dti_det.trk
 echo "renaming $trk_file"
 cp $trk_file ${TRK_DIR}/sub-${sub}/sub-${sub}_var-${TAG}_tract.trk
 
